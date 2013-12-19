@@ -10,7 +10,7 @@ class Spree::TaxCloudCartItem < ActiveRecord::Base
 
   validates :index, :tic, :sku, :price, :quantity, :presence => true
 
-  # attr_accessible :index, :tic, :sku, :price, :quantity, :line_item
+  attr_accessible :index, :tic, :sku, :price, :quantity, :line_item
   accepts_nested_attributes_for :line_item
 
   def to_hash
@@ -21,10 +21,6 @@ class Spree::TaxCloudCartItem < ActiveRecord::Base
       'Price' => price.to_s,
       'Qty' => quantity
     }
-  end
-
-  def tax_cloud_cart_item_params
-    params.require(:index, :tic, :sku, :price, :quantity, :line_item)
   end
 
 end
